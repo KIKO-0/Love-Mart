@@ -1,17 +1,20 @@
 
 
 .mission-info_title {
-  margin-bottom: 10px;
-  font-size: medium;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
 }
 
 .mission-info_desc {
-  font-size: small;
-  color: darkgray;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
 }
 
 .mission-info_credit {
-  font-size: small;
-  color: darkgray;
+  font-size: 12px;
+  color: #999;
   margin-left: 10px;
 }

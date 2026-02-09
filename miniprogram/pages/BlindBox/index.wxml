@@ -1,0 +1,46 @@
+<view class="container">
+  <!-- 背景粒子 -->
+  <view class="particles">
+    <view class="particle" wx:for="{{[1,2,3,4,5,6,7,8,9,10]}}" wx:key="index" style="--d:{{index}}s"></view>
+  </view>
+
+  <view class="header">
+    <view class="title-en">MYSTERY BOX</view>
+    <view class="title-cn">幸运盲盒</view>
+    <view class="subtitle">100 积分 / 次</view>
+  </view>
+
+  <view class="scene">
+    <view class="cube {{isShaking ? 'shaking' : ''}}" bindtap="openBox">
+      <view class="cube-face front">
+        <view class="cube-logo">?</view>
+      </view>
+      <view class="cube-face back"></view>
+      <view class="cube-face right"></view>
+      <view class="cube-face left"></view>
+      <view class="cube-face top"></view>
+      <view class="cube-face bottom"></view>
+    </view>
+    <view class="platform"></view>
+    <view class="box-shadow"></view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-draw" bindtap="openBox" disabled="{{loading}}">
+      <text wx:if="{{!loading}}">立即开启</text>
+      <text wx:else>开启中...</text>
+    </button>
+  </view>
+
+  <!-- 结果弹窗 -->
+  <view class="result-modal {{showResult ? 'show' : ''}}">
+    <view class="modal-backdrop"></view>
+    <view class="modal-content">
+      <view class="light-burst"></view>
+      <view class="result-icon">🎁</view>
+      <view class="result-title">恭喜获得</view>
+      <view class="result-item">{{resultItem}}</view>
+      <button class="btn-confirm" bindtap="closeResult">收下奖励</button>
+    </view>
+  </view>
+</view>

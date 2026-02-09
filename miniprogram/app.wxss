@@ -2,21 +2,35 @@
 @import './miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
 
 page {
-  --footer-height: 10vh;
-  --button-size: 16vw;
-  --button-color: #353535;
-  --button-icon-size: 6vw;
+  /* 品牌色 - Cool Silver/Grey 高冷银灰 */
+  --primary-gradient: linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%);
+  --secondary-gradient: linear-gradient(120deg, #F5F7FA 0%, #C3CFE2 100%);
+  --aurora-gradient: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  
+  /* 基础色 */
+  --bg-color: #F5F7FA;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+  --card-bg: #FFFFFF;
+  --text-main: #2d3436;
+  --text-sub: #636e72;
+  
+  /* 尺寸 */
+  --card-radius: 24px;
+  --spacing-base: 20px;
+  
+  /* 阴影 */
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  --shadow-float: 0 15px 35px rgba(0, 0, 0, 0.08);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
 }
 
 page {
-  background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.container.white{
-    background-color: white;
+  background: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+  color: var(--text-main);
 }
 
 .container {
@@ -25,56 +39,70 @@ page {
   align-items: center;
   box-sizing: border-box;
   min-height: 100vh;
-  overflow-x: hidden;
-  margin-bottom: 80px;
+  padding-bottom: 80px; /* 底部留白 */
 }
 
-button {
-  background: initial;
-}
-
-button:focus {
-  outline: 0;
-}
-
-button::after {
-  border: none;
-}
-
+/* 通用卡片容器 - 磨砂玻璃风格 */
 .form-group {
   width: calc(100% - 40px);
-  margin: 10px 20px;
-  border-radius: 10px;
-  background: white;
+  margin: 15px 20px;
+  border-radius: var(--card-radius);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  overflow: hidden;
+  transition: transform 0.2s ease;
 }
 
+.form-group:active {
+  transform: scale(0.99);
+}
+
+/* 标题标签 */
 .form-group_label {
   align-self: flex-start;
-  margin-top: 20px;
-  margin-left: 20px;
-  color: #8D8D8D;
-  font-size: 15px;
-}
-
-.form-group_label:not(:first-child) {
-  margin-top: 20px;
-}
-
-.form-cell {
-  padding: 20px 15px;
-}
-
-.form-cell:not(:last-child) {
-  border-bottom: rgba(0, 0, 0, 0.05) solid 1px;
-}
-
-.form-cell.inline {
+  margin-top: 24px;
+  margin-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-sub);
+  font-size: 14px;
+  font-weight: 600;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
-@keyframes animation-blur {
-    from {filter: blur(7px);}
-    to {filter: blur(0px);}
+.form-group_label mp-badge {
+  margin-left: 8px;
+}
+
+.form-cell {
+  padding: 16px;
+  position: relative;
+}
+
+.form-cell:not(:last-child)::after {
+  content: " ";
+  position: absolute;
+  left: 16px;
+  bottom: 0;
+  right: 16px;
+  height: 1px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  color: rgba(0,0,0,0.05);
+}
+
+/* 按钮基础样式 */
+button {
+  background: initial;
+  font-weight: 500;
+}
+
+button:focus { outline: 0; }
+button::after { border: none; }
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: #333;
+  box-shadow: 0 4px 10px rgba(168, 237, 234, 0.4);
 }

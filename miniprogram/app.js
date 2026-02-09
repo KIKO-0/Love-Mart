@@ -4,12 +4,14 @@ App({
 
     this.globalData = {
       //记录使用者的openid
-      _openidA: 'onsgK5XqCMLbYXudVgh3xjV4kgWw',
-      _openidB: 'onsgK5Zc7t-bFdnFk3_krqdIRZYY',
+      // (IMPORTANT: 请将下面的 OpenID 替换为您和您女朋友的实际 OpenID)
+      // 您可以在小程序主页底部看到您当前登录账号的 OpenID
+      _openidA: 'oDkJR3fqMsoXjy4hABCZ4l8NBkb8',
+      _openidB: 'oDkJR3ctXb27TjVORGgEIWhOWEzs',
 
       //记录使用者的名字
-      userA: '卡比',
-      userB: '瓦豆',
+      userA: '张博',
+      userB: '方柯人',
 
       //用于存储待办记录的集合名称
       collectionMissionList: 'MissionList',
@@ -19,6 +21,9 @@ App({
 
       //最多单次交易积分
       maxCredit: 500,
+
+      // 订阅消息模板ID
+      templateId: '773KsGCgHf7cp-6LZNeSPWpQFEC4Y3MazIi9_YxOQPU',
     }
   },
 
@@ -41,7 +46,7 @@ App({
     } else { // 如果文件中 envlist 不存在，提示要配置环境
       this.cloud = () => {
         wx.showModal({
-          content: '无云开发环境', 
+          content: '无云开发环境',
           showCancel: false
         })
         throw new Error('无云开发环境')

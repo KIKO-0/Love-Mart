@@ -1,42 +1,86 @@
 .form-cell_title {
-  margin-bottom: 10px;
-  font-size: medium;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
 }
 
 .form-cell_placeholder {
-  font-size: small;
-  color: #d3d3d3;
+  font-size: 14px;
+  color: #ccc;
 }
 
 .form-cell_input {
   width: 100%;
-  font-size: small;
-  color: black;
+  font-size: 14px;
+  color: #333;
+  padding: 5px 0;
 }
 
 .footer {
   width: 100%;
-  height: 8%;
+  padding: 20px 0;
+  background: white;
+  position: fixed;
   bottom: 0;
   display: flex;
-  position: fixed;
-  border-top: lightgray solid 1px;
-}
-
-.footer view {
-  width: 50%;
-  height: 100%;
-  padding-top: 2vh;
-  font-size: 12px;
-  text-align: center;
-}
-
-.reset {
-  color: #353535;
-  background: white;
+  justify-content: space-around;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
 }
 
 .save {
   color: white;
-  background: #353535;
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(161, 196, 253, 0.4);
+}
+
+.reset, .save {
+  width: 40%;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  border-radius: 22px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.reset {
+  color: #666;
+  background: #f5f5f5;
+}
+
+.credit-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.credit-input {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.credit-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.preset-tag {
+  padding: 6px 15px;
+  background: #e6f7ff;
+  color: #1890ff;
+  border: 1px solid #91d5ff;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.preset-tag:active {
+  background: #1890ff;
+  color: white;
 }

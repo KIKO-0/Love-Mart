@@ -1,38 +1,52 @@
+<wxs module="util" src="../util.wxs" />
 <view style="width:100%; background: none;">
 
-  <swiper indicator-dots="true" autoplay="true" interval="2000" duration="500" style="background: white; height: 200px; width: 100%;">
-      <swiper-item><image src="Images/HomeCover01.jpg" mode='widthFix' class="swiper-image" /></swiper-item>
-      <swiper-item><image src="Images/HomeCover02.jpg" mode='widthFix' class="swiper-image" /></swiper-item>
-      <swiper-item><image src="Images/HomeCover03.jpg" mode='widthFix' class="swiper-image" /></swiper-item>
-  </swiper>
-
-<view class="form-group_label">💰 积分榜</view>
-    <view class="form-group" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);">
-    <view class="form-cell">
-        <view class="slide">
-        <view class="title">{{userA}}的积分：{{creditA}}</view>
-        </view>
+  <view class="dashboard">
+    <view class="dashboard-content">
+      <view class="date-chip">Start: 2025.10.15</view>
+      <view class="greeting">Hi, Return!</view>
+      <view class="mood-text">Today is a gift.</view>
     </view>
-    <view class="form-cell">
-        <view class="slide">
-        <view class="title">{{userB}}的积分：{{creditB}}</view>
-        </view>
-    </view>
-</view>
-
-<view class="form-group_label">🐻 欢迎回来</view>
-  <view class="form-group" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);">
-    <view class="form-cell">
-      <view class="slide">
-        <view class="title">欢迎！蓝卡比和红卡比！</view>
+    
+    <view class="love-widget">
+      <view class="days-container">
+        <text class="day-number">{{daysTogether}}</text>
+        <text class="day-label">Days</text>
       </view>
-    </view>
-    <view class="form-cell">
-      <view class="slide">
-        <view class="title">今天想做什么呢？</view>
+      <view class="heart-wrapper">
+        <view class="heart"></view>
       </view>
     </view>
   </view>
-  <view bindtap="requestSubscribeMessage">接收服务通知</view>
+
+  <view class="form-group_label">🏆 积分榜</view>
+  
+  <view class="credit-board">
+    <view class="credit-card user-a">
+      <view class="user-name">{{userA}}</view>
+      <view class="user-score">{{creditA}}</view>
+    </view>
+    <view class="credit-card user-b">
+      <view class="user-name">{{userB}}</view>
+      <view class="user-score">{{creditB}}</view>
+    </view>
+  </view>
+
+  <view class="form-group_label">✨ 欢迎回来</view>
+  <view class="form-group welcome-card">
+    <view class="form-cell">
+      <view class="title-lg">👋 欢迎！张博和方柯人！</view>
+      <view class="subtitle">今天想一起做点什么呢？</view>
+    </view>
+  </view>
+  
+  <view class="footer-actions">
+    <view bindtap="requestSubscribeMessage" class="action-btn">🔔 接收提醒</view>
+  </view>
+
+  <view class="body_text" style="text-align: center; margin-top: 30px; margin-bottom: 20px; color: #333; font-weight: bold;">
+    <text style="font-size: 12px; opacity: 0.6;">您的 OpenID (点击复制到 app.js):</text>
+    <view class="openid-box" selectable="true">{{openid}}</view>
+  </view>
   
 </view>

@@ -13,74 +13,190 @@
   font-size: 12px;
 }
 
-.swiper-image{
-  display: block;
-  height: 100%; 
-  width: 100%;
-  background-color: darkgray;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.form-cell {
-    padding: 0;
-}
-.slide {
+/* Mission Dashboard */
+.mission-dashboard {
+  margin: 20px 20px 10px;
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
   position: relative;
 }
 
-.mission-info {
-  width: auto;
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column
-}
-.mission-info_title {
-  font-size: 18px;
-}
-.mission-info_desc {
-  font-size: 10px;
-  color: #BDBDBD;
-}
-.mission-info_date {
-  font-size: 10px;
-  color: #BDBDBD;
-}
-.mission-info_author {
-  width: 70px;
-  height: 100%;
+.mission-dashboard::after {
+  content: '';
   position: absolute;
-  right: 10%;
-  bottom: 0;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
-.mission-info_award {
+
+.dashboard-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.dashboard-stats {
+  display: flex;
+  align-items: center;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0 15px;
+}
+
+.stat-num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2c3e50;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
   font-size: 10px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background: #eee;
+}
+
+/* 列表项优化 - 悬浮卡片 */
+.form-cell {
+  padding: 0;
+  margin-bottom: 15px; /* 增加间距 */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  transition: transform 0.2s;
+}
+
+.form-cell:active {
+  transform: scale(0.98);
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  background: white; /* 保持纯白背景突出干净感 */
+}
+
+/* 头像微调 */
+.author-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px; /* 方圆形 */
+  margin-right: 15px;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.mission-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-info_title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+
+.mission-info_date {
+  font-size: 12px;
+  color: #95a5a6;
+  background: #f8f9fa;
+  padding: 2px 8px;
+  border-radius: 10px;
+  align-self: flex-start;
+}
+
+.mission-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.credit-tag {
+  background: #f0f9eb;
+  color: #67c23a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.credit-tag.done {
+  background: #f4f4f5;
+  color: #909399;
 }
 
 .star {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  right: 0;
-  top: 0;
+  width: 20px;
+  height: 20px;
 }
 
-.markBtn .weui-slideview__btn {background-color: greenyellow;}
-.starBtn .weui-slideview__btn {background-color: gold;}
-.removeBtn .weui-slideview__btn {background-color: lightsalmon;}
+/* 滑动按钮背景色 */
+.markBtn .weui-slideview__btn {background-color: #95d475;}
+.starBtn .weui-slideview__btn {background-color: #fac858;}
+.removeBtn .weui-slideview__btn {background-color: #ff8e8e;}
 
+/* 悬浮按钮 */
+/* 悬浮按钮优化 */
+/* 悬浮按钮 - Cool Silver */
 .btn-normal{
-  margin: 2%;
-  color: white;
-  background-color: #3d3d3d;
+  margin: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  border-radius: 30px;
+  padding: 0 16px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(56, 249, 215, 0.4);
+  border: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  letter-spacing: 1px;
 }
+
 .btn-hover{
-  color: black;
-  background-color: gray;
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(255, 154, 158, 0.3);
+}
+
+.btn-text {
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 4px;
+  color: #fff;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .search-bar {
@@ -88,19 +204,18 @@
   width: 100%;
   display: flex;
   box-sizing: border-box;
-  background-color: #EFEFF4;
-  border: 1rpx solid #E6E6EA;
-  border-radius: 5px;
+  background-color: #F0F2F5; /* 更柔和的背景 */
+  border-radius: 20px; /* 全圆角 */
+  padding: 5px 10px;
+  align-items: center;
 }
 .search-input {
-  position: relative;
-  left: 28px;
+  flex: 1;
   height: 28px;
-  width: 80%;
   line-height: 28px;
   font-size: 14px;
+  margin-left: 8px;
 }
 .search-icon {
-  position: absolute;
-  margin: 2px;
+  margin-left: 5px;
 }

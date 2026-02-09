@@ -13,7 +13,7 @@ exports.main = async (context) => {
     _openid: context._openid
   }).update({
     data: {
-      credit: db.command.inc(context.value)
+      credit: db.command.inc(Number(context.value))
     }
   })
 }
