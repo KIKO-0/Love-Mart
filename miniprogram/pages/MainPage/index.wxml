@@ -19,6 +19,20 @@
     </view>
   </view>
 
+  <!-- Mood Galaxy Portal -->
+  <view class="galaxy-portal" bindtap="goToGalaxy">
+    <view class="portal-icon">🌌</view>
+    <view class="portal-text">Enter Mood Galaxy</view>
+    <view class="portal-arrow">→</view>
+  </view>
+
+  <!-- Memory Portal -->
+  <view class="memory-portal" bindtap="goToMemoryWall">
+    <view class="portal-icon">📸</view>
+    <view class="portal-text">Memory Wall</view>
+    <view class="portal-arrow">→</view>
+  </view>
+
   <view class="form-group_label">🏆 积分榜</view>
   
   <view class="credit-board">

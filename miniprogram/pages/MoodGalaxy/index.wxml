@@ -1,0 +1,100 @@
+<view class="galaxy-container">
+  <!-- Stars Layer -->
+  <view class="stars-layer">
+    <!-- Static Background Stars (CSS gen) -->
+    <view class="bg-star-1"></view>
+    <view class="bg-star-2"></view>
+    <view class="bg-star-3"></view>
+    
+    <!-- User Diary Stars (Dynamic) -->
+    <block wx:for="{{stars}}" wx:key="_id">
+      <view 
+        class="user-star mood-{{item.mood}}" 
+        style="left: {{item.x}}%; top: {{item.y}}%; animation-delay: {{index * 0.5}}s;"
+        bindtap="onViewStar"
+        data-star="{{item}}"
+      >
+      </view>
+    </block>
+  </view>
+
+  <!-- Title / Header -->
+  <view class="galaxy-header">
+    <text class="title">Mood Galaxy</text>
+    <text class="subtitle">Collect our moments</text>
+  </view>
+
+  <!-- Action Bar -->
+  <view class="action-bar">
+    <button class="add-star-btn" bindtap="onAddStar">
+      <text>✨ Emit Star</text>
+    </button>
+  </view>
+
+
+  <!-- Input Modal -->
+  <view class="modal-mask" wx:if="{{showModal}}" bindtap="closeModal">
+    <view class="glass-modal" catchtap="preventBubble">
+      <view class="modal-header">
+        <text>Emit a Star</text>
+      </view>
+      
+      <scroll-view scroll-x class="mood-selector" enable-flex>
+        <block wx:for="{{moodList}}" wx:key="id">
+            <view 
+                class="mood-item {{currentMood === item.id ? 'active' : ''}}" 
+                bindtap="selectMood" 
+                data-mood="{{item.id}}"
+            >{{item.icon}}</view>
+        </block>
+      </scroll-view>
+
+      <view class="upload-area" bindtap="onChooseImage">
+        <block wx:if="{{tempImage}}">
+            <image src="{{tempImage}}" mode="aspectFill" class="preview-image"></image>
+            <view class="remove-btn" catchtap="onRemoveImage">×</view>
+        </block>
+        <block wx:else>
+            <text class="upload-icon">📷</text>
+            <text class="upload-text">Add Photo</text>
+        </block>
+      </view>
+
+      <textarea 
+        class="star-input" 
+        placeholder="How are you feeling today?" 
+        placeholder-style="color: rgba(255,255,255,0.5);"
+        bindinput="onInputContent"
+        value="{{content}}"
+      ></textarea>
+
+      <button class="submit-btn" bindtap="submitStar" loading="{{loading}}">Launch 🚀</button>
+    </view>
+  </view>
+
+  <!-- Detail Modal (New) -->
+  <view class="modal-mask" wx:if="{{showDetailModal}}" bindtap="closeDetailModal">
+    <view class="glass-modal detail-modal" catchtap="preventBubble">
+      <view class="detail-header">
+        <text class="detail-emoji">{{selectedStarEmoji}}</text>
+        <text class="detail-date">{{selectedStarDate}}</text>
+      </view>
+
+      <scroll-view scroll-y class="detail-scroll">
+          <view class="detail-content">{{selectedStar.content}}</view>
+          
+          <image 
+            wx:if="{{selectedStar.image}}" 
+            src="{{currentImageLink}}" 
+            mode="widthFix" 
+            class="detail-image"
+            bindtap="previewDetailImage"
+          ></image>
+      </scroll-view>
+      
+      <view class="detail-actions">
+        <button class="delete-btn-styled" bindtap="deleteStar">🗑️ Delete Star</button>
+      </view>
+    </view>
+  </view>
+</view>

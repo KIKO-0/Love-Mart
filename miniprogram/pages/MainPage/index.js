@@ -62,6 +62,18 @@ Page({
         this.setData({ daysTogether: diffDays });
     },
 
+    goToGalaxy() {
+        wx.navigateTo({
+            url: '/pages/MoodGalaxy/index',
+        })
+    },
+
+    goToMemoryWall() {
+        wx.navigateTo({
+            url: '/pages/MemoryWall/index',
+        })
+    },
+
     async onShow() {
         this.getCreditA()
         this.getCreditB()

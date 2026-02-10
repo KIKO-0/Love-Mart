@@ -1,0 +1,332 @@
+/* Pages/MoodGalaxy/index.wxss */
+.galaxy-container {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  position: relative;
+  color: white;
+}
+
+.galaxy-header {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  z-index: 10;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  display: block;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+  font-family: 'Times New Roman', serif; /* Elegant font */
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: 0.6;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Background Stars (Static Decoration) */
+.bg-star-1, .bg-star-2, .bg-star-3 {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  animation: twinkle 3s infinite ease-in-out;
+}
+.bg-star-1 { width: 2px; height: 2px; top: 20%; left: 30%; animation-duration: 4s; }
+.bg-star-2 { width: 3px; height: 3px; top: 60%; left: 80%; animation-duration: 5s; }
+.bg-star-3 { width: 2px; height: 2px; top: 40%; left: 10%; animation-duration: 3s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* User Stars */
+.user-star {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 15px currentColor;
+  cursor: pointer;
+  transition: transform 0.3s;
+  /* Increase Hit Area */
+}
+.user-star::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+}
+
+/* Mood Colors */
+.mood-happy { background: #ffd700; box-shadow: 0 0 20px #ffd700; color: #ffd700; }
+.mood-love  { background: #ff6b6b; box-shadow: 0 0 20px #ff6b6b; color: #ff6b6b; }
+.mood-sad   { background: #4facfe; box-shadow: 0 0 20px #4facfe; color: #4facfe; }
+.mood-dreamy{ background: #e0c3fc; box-shadow: 0 0 20px #e0c3fc; color: #e0c3fc; }
+.mood-angry { background: #ff4757; box-shadow: 0 0 20px #ff4757; color: #ff4757; }
+.mood-tired { background: #a4b0be; box-shadow: 0 0 20px #a4b0be; color: #a4b0be; }
+.mood-excited{ background: #2ed573; box-shadow: 0 0 20px #2ed573; color: #2ed573; }
+.mood-relaxed{ background: #ffa502; box-shadow: 0 0 20px #ffa502; color: #ffa502; }
+
+.action-bar {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.add-star-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 30px;
+  padding: 0 30px; /* Use default padding */
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+
+
+/* Modal Styles */
+.modal-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.glass-modal {
+  width: 80%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  transform: translateY(0);
+  animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.mood-selector {
+  display: flex;
+  flex-wrap: nowrap; /* Horizontal Scroll */
+  overflow-x: auto;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mood-item {
+  flex: 0 0 auto; /* Don't shrink */
+  font-size: 28px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.mood-item:last-child {
+  margin-right: 0;
+}
+
+.mood-item.active {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.1);
+  border-color: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+/* Upload Area */
+.upload-area {
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
+
+.upload-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.star-input {
+  width: 100%;
+  height: 120px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  color: white;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(161, 140, 209, 0.4);
+}
+
+/* Detail Modal Styles */
+.detail-modal {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 15px;
+}
+
+.detail-emoji {
+  font-size: 48px;
+  margin-bottom: 5px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+.detail-date {
+  font-size: 14px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.detail-scroll {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.detail-content {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  white-space: pre-wrap;
+}
+
+.detail-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.delete-btn-styled {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+  font-size: 14px;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 71, 87, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  transition: all 0.2s;
+}
+
+.delete-btn-styled:active {
+  background: rgba(255, 71, 87, 0.4);
+  transform: scale(0.95);
+}

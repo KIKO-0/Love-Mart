@@ -1,0 +1,81 @@
+<view class="wall-container">
+  
+  <view class="header">
+    <text class="title">Memory Wall</text>
+    <text class="subtitle">Our precious moments</text>
+  </view>
+
+  <!-- Masonry Layout -->
+  <view class="masonry">
+    <!-- Left Column -->
+    <view class="column">
+      <block wx:for="{{memories}}" wx:key="_id" wx:if="{{index % 2 === 0}}">
+        <view class="polaroid" bindtap="viewMemory" data-url="{{item.displayImage}}">
+          <image src="{{item.displayImage}}" mode="widthFix" class="photo"></image>
+          <view class="meta-row">
+            <text class="date-chip">{{item.dateStr}}</text>
+          </view>
+          <view class="caption" wx:if="{{item.content}}">{{item.content}}</view>
+        </view>
+      </block>
+    </view>
+
+    <!-- Right Column -->
+    <view class="column">
+      <block wx:for="{{memories}}" wx:key="_id" wx:if="{{index % 2 !== 0}}">
+        <view class="polaroid" bindtap="viewMemory" data-url="{{item.displayImage}}">
+          <image src="{{item.displayImage}}" mode="widthFix" class="photo"></image>
+           <view class="meta-row">
+            <text class="date-chip">{{item.dateStr}}</text>
+          </view>
+          <view class="caption" wx:if="{{item.content}}">{{item.content}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- Empty State -->
+  <view wx:if="{{memories.length === 0 && !loading}}" class="empty-state">
+    <text>No memories yet. Upload one! 👇</text>
+  </view>
+
+  <!-- FAB -->
+  <view class="fab" bindtap="onAddMemory">
+    <text class="fab-icon">+</text>
+  </view>
+
+  <!-- Upload Modal -->
+  <view class="modal-mask" wx:if="{{showUploadModal}}">
+      <view class="upload-modal" catchtap="preventBubble">
+          <view class="modal-title">New Memory</view>
+          
+          <image src="{{tempImage}}" mode="aspectFill" class="upload-preview"></image>
+          
+          <textarea 
+            class="upload-input" 
+            placeholder="What's happening in this photo?" 
+            bindinput="onInputContent"
+            value="{{uploadContent}}"
+          ></textarea>
+          
+          <view class="modal-actions">
+              <button class="btn-cancel" bindtap="closeUploadModal">Cancel</button>
+              <button class="btn-confirm" bindtap="confirmUpload">Post</button>
+          </view>
+      </view>
+  </view>
+
+  <!-- Detail Modal (Lightbox) -->
+  <view class="lightbox-mask" wx:if="{{showDetailModal}}" bindtap="closeDetailModal">
+      <view class="lightbox-content" catchtap="preventBubble">
+          <image src="{{selectedMemory.image}}" mode="widthFix" class="lightbox-img"></image>
+          <view class="lightbox-info">
+              <view class="lightbox-date">{{selectedMemory.dateStr}}</view>
+              <view class="lightbox-text">{{selectedMemory.content}}</view>
+              <view class="delete-btn" catchtap="deleteMemory">🗑️ Delete</view>
+          </view>
+          <view class="close-lightbox" catchtap="closeDetailModal">×</view>
+      </view>
+  </view>
+
+</view>

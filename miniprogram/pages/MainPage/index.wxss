@@ -192,6 +192,71 @@
 }
 
 /* 欢迎卡片 */
+.galaxy-portal {
+  margin: 15px 20px 0;
+  background: #0b0c15; /* Deep space color */
+  border-radius: 16px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(11, 12, 21, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.galaxy-portal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: skewX(-20deg) translateX(-150%);
+  animation: shimmer 3s infinite;
+}
+
+.memory-portal {
+  margin: 15px 20px 0;
+  background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%); /* Pastel Pink/Purple */
+  border-radius: 16px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-portal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg) translateX(-150%);
+  animation: shimmer 3s infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes shimmer {
+  100% { transform: skewX(-20deg) translateX(150%); }
+}
+
+.portal-icon {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.portal-text {
+  flex: 1;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.portal-arrow {
+  font-weight: bold;
+  opacity: 0.6;
+}
+
 .title-lg {
   font-size: 18px;
   font-weight: bold;
